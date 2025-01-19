@@ -11,5 +11,10 @@ pipeline {
                 sh 'node -v'
             }
         }
+        stage ('Installing Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
    }
 }

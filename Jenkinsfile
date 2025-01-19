@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         nodejs "NodeJS234"
-        SonarQubeScanner 'sonar-server'
+        SonarQubeScanner "sonar-server"
     }
     environment {
         SONARQUBE_URL = 'http://localhost:9000'

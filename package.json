@@ -8,8 +8,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha test/*.js",
-    "lint": "eslint .",
-    "build": "node build.js"
+    "lint": "eslint ."
   },
   "author": "Chris Sevilleja <scotch.io>",
   "license": "MIT",

@@ -28,10 +28,6 @@ pipeline {
                 sh 'npm run lint || echo "Linting completed with issues. Check the logs."'
             }
         }
-        stage ('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
+        
    }
 }

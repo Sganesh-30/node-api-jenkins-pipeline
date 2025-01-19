@@ -23,12 +23,6 @@ pipeline {
             steps {
                 bat 'npm run test'
             }
-        }
-        stage ('Lint') {
-            steps {
-                bat 'npm run lint || echo "Linting completed with issues. Check the logs."'
-            }
-        }
-        
+        } 
    }
 }

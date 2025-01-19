@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs "NodeJS234"
+        nodejs "NodeJS236"
     }
 
     stages {

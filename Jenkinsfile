@@ -16,6 +16,7 @@ pipeline {
             steps {
                 bat 'npm install'
                 bat 'npm install --save-dev mocha'
+                bat 'npm install -g eslint'
             }
         }
         stage ('Unit Test') {

@@ -8,24 +8,24 @@ pipeline {
     stages {
         stage ('Print NodeJS and NPM Version') {
             steps {
-                sh 'node -v'
-                sh 'npm -v'
+                bat 'node -v'
+                bat 'npm -v'
             }
         }
         stage ('Installing Dependencies') {
             steps {
-                sh 'npm install'
-                sh 'npm install --save-dev mocha'
+                bat 'npm install'
+                bat 'npm install --save-dev mocha'
             }
         }
         stage ('Unit Test') {
             steps {
-                sh 'npm run test'
+                bat 'npm run test'
             }
         }
         stage ('Lint') {
             steps {
-                sh 'npm run lint || echo "Linting completed with issues. Check the logs."'
+                bat 'npm run lint || echo "Linting completed with issues. Check the logs."'
             }
         }
         

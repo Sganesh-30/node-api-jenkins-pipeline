@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         nodejs "NodeJS234"
-        SonarQubeScanner "SonarQube Scanner"
+        snarQubeScanner "SonarQube Scanner"
     }
     environment {
         SONARQUBE_URL = 'http://localhost:9000'
@@ -21,7 +21,6 @@ pipeline {
             steps {
                 bat 'npm install'
                 bat 'npm install --save-dev mocha'
-                bat 'npm install -g eslint'
             }
         }
         stage ('Unit Test') {
@@ -30,7 +29,7 @@ pipeline {
             }
         }
         stage ('SonarQube Analysis') {
-            step {
+            steps {
                 script {
                     bat """
                 sonar-scanner.bat -D"sonar.projectKey=node-project" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_10214cc75205f24972ee60ffd4c65505005e13b6"

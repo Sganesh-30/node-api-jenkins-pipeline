@@ -6,7 +6,8 @@ pipeline {
     }
 
     stages {
-        stage ('Print NodeJS Version')
-        sh 'node -v'
+        stage ('Print NodeJS Version') {
+            sh 'node -v'
+        }
     }
 }

@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     bat """
-                sonar-scanner.bat -D"sonar.projectKey=node-project" -D"sonar.sources=." -D"sonar.host.url=${SONARQUBE_URL}" -D"sonar.token=${SONARQUBE_TOKEN}
+                sonar-scanner.bat -D"sonar.projectKey=node-project" -D"sonar.sources=." -D"sonar.host.url=${SONARQUBE_URL}" -D"sonar.token=${SONARQUBE_TOKEN}"
                 """
                 }
             }

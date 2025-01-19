@@ -3,6 +3,11 @@ pipeline {
 
     tools {
         nodejs "NodeJS234"
+        SonarQubeScanner "sonar-server"
+    }
+    environment {
+        SONARQUBE_URL = 'http://localhost:9000'
+        SONARQUBE_TOKEN = credentials('sonar-token')
     }
 
     stages {
@@ -22,6 +27,13 @@ pipeline {
         stage ('Unit Test') {
             steps {
                 bat 'npm run test'
+            }
+        }
+        stage ('SonarQube Analysis') {
+            step {
+                bat """
+                sonar-scanner.bat -D"sonar.projectKey=node-project" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_10214cc75205f24972ee60ffd4c65505005e13b6"
+                """
             }
         } 
    }

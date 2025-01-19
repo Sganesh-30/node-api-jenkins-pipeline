@@ -23,5 +23,10 @@ pipeline {
                 sh 'npm run test'
             }
         }
+        stage ('Lint') {
+            steps {
+                sh 'npm run lint || echo "Linting completed with issues. Check the logs."'
+            }
+        }
    }
 }

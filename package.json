@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "mocha"
+    "test": "mocha test/*.js"
   },
   "author": "Chris Sevilleja <scotch.io>",
   "license": "MIT",

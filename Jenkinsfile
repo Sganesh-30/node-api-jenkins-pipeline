@@ -75,6 +75,11 @@ pipeline {
             }
         }
       }
+      stage ('Deploying Container') {
+        steps {
+            bat "docker run -d --name app1 -p 5000:5000 sganesh3010:nodeapp1:v1"
+        }
+      }
    }
 
 }

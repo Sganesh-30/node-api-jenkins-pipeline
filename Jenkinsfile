@@ -30,7 +30,8 @@ pipeline {
       stage('SonarQube Analysis') {
         steps {
             script {
-                withCredentials([string(credentialsId: 'Sonar-Token', variable: 'SONAR_TOKEN')]) {
+                withSonarQubeEnv('sonar-server') {
+                    withCredentials([string(credentialsId: 'Sonar-Token', variable: 'SONAR_TOKEN')]) {
                     bat """
                     sonar-scanner.bat ^
                         -D"sonar.projectKey=node-project" ^
@@ -39,14 +40,17 @@ pipeline {
                         -D"sonar.login=%SONAR_TOKEN%"
                     """
                     }
+                }
+
                }
             }
        }
        stage ('Quality Gate') {
         steps {
-            timeout(1) {
+            echo 'Evaluating Quality Gate status...'
+             timeout(time: 2, unit: 'MINUTES') {
                 waitForQualityGate abortPipeline: true
-            }
+             }
         }
       }
    }

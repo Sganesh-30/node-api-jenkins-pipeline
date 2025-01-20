@@ -65,7 +65,7 @@ pipeline {
                 bat """
                 docker login -u sganesh3010 --password-stdin
 
-                docker tag sganesh3010/nodeapp1:latest
+                docker tag nodeapp1:latest sganesh3010/nodeapp1:latest
 
                 docker push sganesh3010/nodeapp1:latest
 

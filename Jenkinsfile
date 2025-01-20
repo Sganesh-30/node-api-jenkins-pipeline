@@ -19,6 +19,7 @@ pipeline {
         stage ('Installing Dependencies') {
             steps {
                 bat 'npm install'
+                bat 'npm install express --save'
             }
         }
         stage ('Unit Test') {

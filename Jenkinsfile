@@ -7,7 +7,6 @@ pipeline {
     environment {
         SONARQUBE_URL = 'http://localhost:9000'
         SONARQUBE_TOKEN = credentials('Sonar-Token')
-        DOCKER_IMAGE = sganesh3010/nodeapp1:v1
     }
 
     stages {
@@ -68,7 +67,7 @@ pipeline {
 
                 docker tag sganesh3010/nodeapp1:v1
 
-                docker push %DOCKER_IMAGE%
+                docker push sganesh3010/nodeapp1:v1
 
                 docker logout
 

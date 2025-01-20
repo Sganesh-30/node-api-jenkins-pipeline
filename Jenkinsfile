@@ -7,6 +7,7 @@ pipeline {
     environment {
         SONARQUBE_URL = 'http://localhost:9000'
         SONARQUBE_TOKEN = credentials('Sonar-Token')
+        DOCKER_IMAGE = sganesh3010/nodeapp1:v1
     }
 
     stages {
@@ -57,6 +58,22 @@ pipeline {
         steps {
             echo "Building docker image"
             bat "docker build -t nodeapp1 -f Dockerfile . "
+        }
+      }
+      stage ('Pushing Docker Image to DockerHub'){
+        steps {
+            withCredentials([usernameColonPassword(credentialsId: 'dockerhub-cred', variable: 'docker-hub creds')]) {
+                bat """
+                docker login -u sganesh3010 --password-stdin
+
+                docker tag sganesh3010/nodeapp1:v1
+
+                docker push %DOCKER_IMAGE%
+
+                docker logout
+
+                """
+            }
         }
       }
    }

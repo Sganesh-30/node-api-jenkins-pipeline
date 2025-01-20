@@ -14,7 +14,7 @@ app.use(morgan('dev')); // log requests to the console
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port     = process.env.PORT || 8080; // set our port
+var port     = process.env.PORT || 5000; // set our port
 
 // DATABASE SETUP
 var mongoose   = require('mongoose');
@@ -44,7 +44,7 @@ router.use(function(req, res, next) {
 	next();
 });
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
+// test route to make sure everything is working (accessed at GET http://localhost:5000/api)
 router.get('/', function(req, res) {
 	res.json({ message: 'hooray! welcome to our api!' });	
 });
@@ -53,7 +53,7 @@ router.get('/', function(req, res) {
 // ----------------------------------------------------
 router.route('/bears')
 
-	// create a bear (accessed at POST http://localhost:8080/bears)
+	// create a bear (accessed at POST http://localhost:5000/bears)
 	.post(function(req, res) {
 		
 		var bear = new Bear();		// create a new instance of the Bear model
@@ -69,7 +69,7 @@ router.route('/bears')
 		
 	})
 
-	// get all the bears (accessed at GET http://localhost:8080/api/bears)
+	// get all the bears (accessed at GET http://localhost:5000/api/bears)
 	.get(function(req, res) {
 		Bear.find(function(err, bears) {
 			if (err)

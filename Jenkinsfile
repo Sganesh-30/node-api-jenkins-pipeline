@@ -56,7 +56,7 @@ pipeline {
       stage ('Build Docker Image') {
         steps {
             echo "Building docker image"
-            docker build -t nodeapp1 -f Dockerfile .
+            bat "docker build -t nodeapp1 -f Dockerfile . "
         }
       }
    }

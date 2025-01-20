@@ -20,6 +20,7 @@ pipeline {
             steps {
                 bat 'npm install'
                 bat 'npm install express --save'
+                bat 'npm install morgan --save'
             }
         }
         stage ('Unit Test') {

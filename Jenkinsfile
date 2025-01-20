@@ -19,7 +19,6 @@ pipeline {
         stage ('Installing Dependencies') {
             steps {
                 bat 'npm install'
-                bat 'npm install --save-dev mocha'
             }
         }
         stage ('Unit Test') {

@@ -30,7 +30,7 @@ pipeline {
       stage('SonarQube Analysis') {
         steps {
             script {
-                withSonarQubeEnv('sonar-server') {
+                withSonarQubeEnv('sonarserver') {
                     withCredentials([string(credentialsId: 'Sonar-Token', variable: 'SONAR_TOKEN')]) {
                     bat """
                     sonar-scanner.bat ^

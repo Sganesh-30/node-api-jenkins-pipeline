@@ -27,16 +27,23 @@ pipeline {
                 bat 'npm run test'
             }
         }
-        stage ('SonarQube Analysis') {
-            steps {
-                script {
+      stage('SonarQube Analysis') {
+        steps {
+            script {
+                withCredentials([string(credentialsId: 'Sonar-Token', variable: 'SONAR_TOKEN')]) {
                     bat """
-                sonar-scanner.bat -D"sonar.projectKey=node-project" -D"sonar.sources=." -D"sonar.host.url=${SONARQUBE_URL}" -D"sonar.token=${SONARQUBE_TOKEN}"
-                """
-                }
+                    sonar-scanner.bat ^
+                        -D"sonar.projectKey=node-project" ^
+                        -D"sonar.sources=." ^
+                        -D"sonar.host.url=http://localhost:9000" ^
+                        -D"sonar.login=%SONAR_TOKEN%"
+                    """
+                    }
+               }
             }
-        } 
+       }
    }
+
 }
 
 

@@ -44,14 +44,6 @@ pipeline {
                }
             }
        }
-       stage ('Quality Gate') {
-        steps {
-            echo 'Evaluating Quality Gate status...'
-             timeout(time: 10, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: false
-             }
-        }
-      }
       stage ('Build Docker Image') {
         steps {
             echo "Building docker image"

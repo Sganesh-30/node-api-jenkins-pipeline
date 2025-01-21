@@ -4,6 +4,7 @@ pipeline {
     parameters {
         string(name: 'SONAR_PROJECT_KEY', defaultValue: 'node-project', description: 'SonarQube project key')
         string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'nodeapp1', description: 'Docker image name')
+        string(name: 'CONTAINER_NAME', defaultValue: 'nodeapp2', description: 'Container name')
         choice(name: 'DEPLOY_ENVIRONMENT', choices: ['Development', 'Staging', 'Production'], description: 'Choose deployment environment')
     }
 
@@ -72,7 +73,7 @@ pipeline {
         stage ('Deploying Container') {
             steps {
                 echo "Deploying container in ${params.DEPLOY_ENVIRONMENT} environment"
-                bat "docker run -d --name app1 -p 5000:5000 sganesh3010/${params.DOCKER_IMAGE_NAME}:latest"
+                bat "docker run -d --name ${params.CONTAINER_NAME} -p 5000:5000 sganesh3010/${params.DOCKER_IMAGE_NAME}:latest"
             }
         }
     }

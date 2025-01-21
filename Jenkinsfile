@@ -5,7 +5,7 @@ pipeline {
         string(name: 'SONAR_PROJECT_KEY', defaultValue: 'node-project', description: 'SonarQube project key')
         string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'nodeapp1', description: 'Docker image name')
         string(name: 'CONTAINER_NAME', defaultValue: 'app2', description: 'Container name')
-        string(name: 'APP_PORT', defaultValue: '5001', description: 'App port for container')
+        string(name: 'APP_PORT', defaultValue: '5003', description: 'App port for container')
         choice(name: 'DEPLOY_ENVIRONMENT', choices: ['Development', 'Staging', 'Production'], description: 'Choose deployment environment')
     }
 
